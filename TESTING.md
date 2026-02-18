@@ -11,7 +11,7 @@ All tests use an **H2 in-memory database**, so no external database setup is req
 ## Test Classes
 
 ### 1. `StaffRatingValidationTest`
-Tests Jakarta Bean Validation constraints on the `StaffRating` entity.
+Test constraints on the `StaffRating` entity.
 
 | Test | What it verifies |
 |---|---|
@@ -30,7 +30,7 @@ Tests Jakarta Bean Validation constraints on the `StaffRating` entity.
 | `nullComment_shouldPass` | Null/empty comment is accepted (optional field) |
 
 ### 2. `StaffRatingControllerTest`
-Uses `@WebMvcTest` slice testing with a mocked repository to test HTTP endpoints.
+Test HTTP endpoints.
 
 | Test | What it verifies |
 |---|---|
@@ -43,7 +43,7 @@ Uses `@WebMvcTest` slice testing with a mocked repository to test HTTP endpoints
 | `deleteRating_shouldRedirect` | `GET /delete/{id}` redirects to `/` |
 
 ### 3. `StaffRatingRepositoryTest`
-Uses `@DataJpaTest` with H2 to test JPA persistence.
+Test JPA persistence.
 
 | Test | What it verifies |
 |---|---|

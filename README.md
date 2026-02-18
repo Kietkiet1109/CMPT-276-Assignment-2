@@ -2,6 +2,8 @@
 
 A full CRUD web application for rating Computer Science teaching staff, built with **Spring Boot**, **Thymeleaf**, and **PostgreSQL**.
 
+**Deployed URL:** https://cmpt-276-assignment-2-99bz.onrender.com
+
 ## Features
 
 - **Create** new staff ratings with validation
@@ -26,20 +28,39 @@ A full CRUD web application for rating Computer Science teaching staff, built wi
 - Java 21+
 - Maven (or use the included `mvnw` wrapper)
 
-### Start the Application
+### Start the Application Locally
 ```bash
 ./mvnw spring-boot:run
 ```
 The app will start at `http://localhost:8080/`.
 
-By default, it tries to connect to a PostgreSQL database via the `JDBC_DATABASE_URL` environment variable. For local development without PostgreSQL, the app falls back to an H2 in-memory database.
+## Deployment 
 
-### Environment Variables (for PostgreSQL)
-```
-JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/yourdb
-JDBC_DATABASE_USERNAME=youruser
-JDBC_DATABASE_PASSWORD=yourpassword
-```
+This application is deployed on [Render](https://render.com) using a Docker container and PostgreSQL database.
+
+### Database Setup
+1. Create a new **PostgreSQL** database on Render.
+   - **Name:** `cmpt276_assignment2_db`
+   - **Region:** Oregon (US West)
+   - **Version:** 17
+2. Once created, copy the **Internal Database URL**, **Username**, and **Password** from the dashboard.
+
+### Web Service Setup
+1. Create a new **Web Service** on Render connected to this GitHub repository.
+2. Select **Docker** as the Runtime.
+
+### Environment Variables
+You must set the following environment variables in the Render "Environment" tab to connect the app to the database.
+
+| Key | Value |
+| :--- | :--- |
+| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://dpg-d6afio3h46gs73c1g8ig-a:5432/cmpt276_assignment2_db` |
+| `SPRING_DATASOURCE_USERNAME` | `cmpt276_assignment2_db_user` |
+| `SPRING_DATASOURCE_PASSWORD` | `1UzSb0xpljfdHHT7o9yLJGMMVcBYdT6a` |
+
+### Deploy
+1. Click **Create Web Service**.
+2. Watch the logs. The build should finish, and the app will start on port `8080`.
 
 ## Running Tests
 ```bash
@@ -71,6 +92,7 @@ src/main/java/com/cmpt276/assignment2/
 - Average rating calculation is a simple mean of three scores; could add weighted averages
 - No pagination on the index page yet
 - No search/filter functionality
+- Login/Signup to add or edit rating
 - Unique email constraint may cause a server error on duplicate submission (could add friendlier error handling)
 
 ## AI Assistance Declaration

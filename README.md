@@ -77,5 +77,6 @@ src/main/java/com/cmpt276/assignment2/
 
 - Detail comments for code.
 - Identify the cause of specific console errors during the development process.
+- Dockerfile to support hosting to Render.
 - Testing cases for Assignment 2 and `TESTING.md`.
 - `README.md` to declare any AI assistance in the Assignment 2
